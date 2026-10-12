@@ -1,37 +1,304 @@
-.youth-section {
+/* The youth page shares the church's typography, colors, and spacing. */
+.youth-page .youth-hero {
+  padding-block: clamp(48px, 6vw, 80px) clamp(64px, 7vw, 96px);
+  border-bottom: 1px solid var(--border);
   background: var(--cream);
-  border-block: 1px solid var(--border);
 }
 
-.youth-gallery {
+.youth-page .youth-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
-  align-items: start;
-  gap: 28px;
-  max-width: 1000px;
-  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(40px, 5vw, 72px);
 }
 
-.youth-photo { margin: 0; min-width: 0; }
+.youth-page .youth-intro { min-width: 0; }
 
-.youth-photo img {
+.youth-page .youth-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 34px;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.youth-page .youth-back:hover { color: var(--green-dark); }
+.youth-page .youth-back svg { flex-shrink: 0; }
+.youth-page .youth-intro .eyebrow { margin-bottom: 22px; }
+
+.youth-page .youth-intro h1 {
+  max-width: 11ch;
+  font-size: clamp(52px, 5.3vw, 72px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -3px;
+  color: var(--ink);
+  overflow-wrap: normal;
+}
+
+.youth-page .youth-intro h1 em {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 400;
+  color: var(--green-dark);
+}
+
+.youth-page .youth-intro > p {
+  max-width: 48ch;
+  margin-top: 25px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.youth-page .youth-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px 28px;
+  margin-top: 30px;
+}
+
+.youth-page .youth-hero-actions .text-link {
+  min-height: 44px;
+  color: var(--ink);
+}
+
+.youth-page .youth-hero-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 27px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.youth-page .youth-hero-note svg {
+  flex-shrink: 0;
+  color: var(--green-dark);
+}
+
+.youth-page .youth-cover { min-width: 0; margin: 0; }
+
+.youth-page .youth-cover img {
+  display: block;
   width: 100%;
   height: auto;
   border-radius: 4px;
+  background: var(--border);
 }
 
-.youth-photo figcaption {
-  margin-top: 14px;
+.youth-page .youth-moments { background: var(--page-background); }
+.youth-page .youth-moments .section-heading > div { min-width: 0; }
+.youth-page .youth-moments .section-heading h2 { max-width: 16ch; }
+
+.youth-page .youth-gallery {
+  column-count: 3;
+  column-gap: 24px;
+}
+
+.youth-page .youth-photo {
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 30px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  vertical-align: top;
+}
+
+.youth-page .youth-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background: var(--border);
+}
+
+.youth-page .youth-meetup {
+  border-block: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.youth-page .youth-meetup-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+}
+
+.youth-page .youth-meetup-copy { min-width: 0; }
+.youth-page .youth-meetup-copy .eyebrow { margin-bottom: 22px; }
+.youth-page .youth-meetup-copy h2 { max-width: 16ch; }
+
+.youth-page .youth-meetup-copy > p {
+  max-width: 52ch;
+  margin-top: 23px;
+  font-size: 15px;
+  line-height: 1.85;
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 500;
+}
+
+.youth-page .youth-details {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  margin-top: 30px;
+}
+
+.youth-page .youth-details > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.youth-page .youth-details > div > svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--green-dark);
+}
+
+.youth-page .youth-details span { min-width: 0; }
+
+.youth-page .youth-details small {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
   line-height: 1.6;
+  letter-spacing: .8px;
+  color: var(--muted);
+}
+
+.youth-page .youth-details strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.youth-page .youth-details span > span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.youth-page .youth-meetup-card {
+  min-width: 0;
+  padding: clamp(28px, 3.6vw, 46px);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--page-background);
+}
+
+.youth-page .youth-meetup-card > svg {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 24px;
+  color: var(--green-dark);
+  stroke-width: 1.5;
+}
+
+.youth-page .youth-meetup-card h3 {
+  font-size: clamp(25px, 2.4vw, 32px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -.8px;
+  color: var(--ink);
+}
+
+.youth-page .youth-meetup-card p {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.youth-page .youth-meetup-card .button {
+  width: 100%;
+  justify-content: space-between;
+  min-height: 50px;
+  margin-top: 27px;
+}
+
+.youth-page .youth-meetup-card .text-link {
+  min-height: 44px;
+  margin-top: 15px;
+  color: var(--ink);
+}
+
+.youth-page[data-theme='dark'] .youth-intro h1 em,
+.youth-page[data-theme='dark'] .youth-back:hover,
+.youth-page[data-theme='dark'] .youth-hero-note svg,
+.youth-page[data-theme='dark'] .youth-details > div > svg,
+.youth-page[data-theme='dark'] .youth-meetup-card > svg {
+  color: #b5d187;
+}
+
+@media (max-width: 980px) {
+  .youth-page .youth-hero-inner { gap: 36px; }
+  .youth-page .youth-intro h1 { font-size: clamp(48px, 6vw, 60px); }
+  .youth-page .youth-gallery { column-count: 2; }
+  .youth-page .youth-meetup-grid { gap: 36px; }
+}
+
+@media (max-width: 900px) {
+  .youth-page .youth-hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .youth-page .youth-intro h1 {
+    max-width: 13ch;
+    font-size: clamp(54px, 8vw, 72px);
+  }
+
+  .youth-page .youth-intro > p { max-width: 60ch; }
+  .youth-page .youth-cover { width: min(100%, 720px); }
 }
 
 @media (max-width: 760px) {
-  .youth-gallery {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    max-width: 480px;
+  .youth-page .youth-hero { padding-block: 32px 64px; }
+  .youth-page .youth-back { margin-bottom: 30px; }
+  .youth-page .youth-intro h1 {
+    max-width: 12ch;
+    font-size: clamp(44px, 9vw, 64px);
+    letter-spacing: -2px;
   }
+
+  .youth-page .youth-intro > p,
+  .youth-page .youth-meetup-copy > p { font-size: 14px; }
+
+  .youth-page .youth-hero-actions { gap: 14px 24px; }
+  .youth-page .youth-hero-note { margin-top: 22px; }
+  .youth-page .youth-gallery { column-gap: 20px; }
+  .youth-page .youth-photo { margin-bottom: 26px; }
+
+  .youth-page .youth-meetup-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .youth-page .youth-meetup-card { max-width: 560px; }
+}
+
+@media (max-width: 600px) {
+  .youth-page .youth-gallery { column-count: 1; }
+  .youth-page .youth-photo { margin-bottom: 30px; }
+  .youth-page .youth-photo:last-child { margin-bottom: 0; }
+  .youth-page .youth-moments .section-heading h2 { max-width: 15ch; }
+}
+
+@media (max-width: 480px) {
+  .youth-page .youth-intro h1 { font-size: clamp(42px, 12vw, 54px); }
+  .youth-page .youth-hero-actions { align-items: stretch; flex-direction: column; }
+  .youth-page .youth-hero-actions .button { width: 100%; justify-content: space-between; }
+  .youth-page .youth-hero-actions .text-link { align-self: flex-start; }
+  .youth-page .youth-meetup-card { padding: 26px; }
 }

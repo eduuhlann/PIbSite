@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, CalendarDays, Check, Clock3, Heart, Instagram, Leaf, MapPin, Menu, Moon, Navigation, Plus, Sun, UsersRound, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, CalendarDays, Check, Clock3, Heart, Instagram, Leaf, MapPin, Navigation, Plus, UsersRound, X } from 'lucide-react'
 import { church, gatherings } from './content'
 import { useTheme } from './useTheme'
 import { useSmoothScroll } from './useSmoothScroll'
 import ScheduleList from './ScheduleList'
 import AnimatedText from './AnimatedText'
-import './youth.css'
+import SiteHeader from './SiteHeader'
+import SiteFooter from './SiteFooter'
+import { useScrollReveal } from './useScrollReveal'
 
 type Modal = 'visit' | 'about' | null
 
@@ -16,13 +18,13 @@ const navigation = [
 ]
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('inicio')
   const [modal, setModal] = useState<Modal>(null)
   const { theme, toggleTheme } = useTheme()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const isDialogOpen = modal !== null
   useSmoothScroll(isDialogOpen)
+  useScrollReveal()
 
   useEffect(() => {
     if (!isDialogOpen) return
@@ -48,66 +50,14 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    if (!('IntersectionObserver' in window)) return
-    const shell = document.querySelector('.site-shell')
-    const elements = document.querySelectorAll<HTMLElement>('[data-reveal]')
-    if (!shell || elements.length === 0) return
-
-    shell.classList.add('has-scroll-reveal')
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        entry.target.classList.add('is-revealed')
-        observer.unobserve(entry.target)
-      })
-    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' })
-    elements.forEach((element) => observer.observe(element))
-
-    return () => {
-      observer.disconnect()
-      shell.classList.remove('has-scroll-reveal')
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!menuOpen) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [menuOpen])
-
   const openModal = (next: Modal) => {
-    setMenuOpen(false)
     setModal(next)
   }
 
   return (
     <div className="site-shell" data-theme={theme}>
       <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
-      <div className="announcement">
-        <div className="container announcement-inner">
-          <span>Uma comunidade de fé, esperança e amor.</span>
-          <a href={church.instagram} target="_blank" rel="noreferrer"><Instagram size={13} /> {church.instagramHandle}<ArrowUpRight size={12} /></a>
-        </div>
-      </div>
-
-      <header className="header">
-        <div className="container header-inner">
-          <a href="#inicio" className="brand" aria-label="PIB Campo Mourão — início" onClick={() => setMenuOpen(false)}>
-            <img src="/logo-pib.png" width="375" height="175" alt="Primeira Igreja Batista Campo Mourão" />
-          </a>
-          <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label="Navegação principal" id="main-navigation">
-            {navigation.map((item) => <a key={item.id} href={`#${item.id}`} className={activeSection === item.id ? 'nav-link active' : 'nav-link'} aria-current={activeSection === item.id ? 'location' : undefined} onClick={() => setMenuOpen(false)}>{item.label}</a>)}
-            <button className="button button-green mobile-visit" onClick={() => openModal('visit')}>Venha nos visitar <ArrowUpRight size={17} /></button>
-          </nav>
-          <button className="theme-toggle" type="button" aria-label={theme === 'light' ? 'Tema claro. Ativar modo escuro' : 'Tema escuro. Ativar modo claro'} title={theme === 'light' ? 'Mudar para modo escuro' : 'Mudar para modo claro'} onClick={toggleTheme}>{theme === 'light' ? <Sun size={18} strokeWidth={1.7} aria-hidden="true" /> : <Moon size={18} strokeWidth={1.7} aria-hidden="true" />}<span>{theme === 'light' ? 'Claro' : 'Escuro'}</span></button>
-          <button className="button button-green header-visit" onClick={() => openModal('visit')}>Venha nos visitar <ArrowUpRight size={17} /></button>
-          <button className="menu-toggle" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
-        </div>
-      </header>
+      <SiteHeader page="home" activeSection={activeSection} theme={theme} onToggleTheme={toggleTheme} onVisit={() => openModal('visit')} />
 
       <main id="conteudo">
         <section className="hero" id="inicio" aria-labelledby="hero-title">
@@ -176,28 +126,6 @@ function App() {
           </div>
         </section>
 
-        <section className="youth-section section-space" id="juventude" aria-labelledby="youth-title">
-          <div className="container">
-            <div className="section-heading" data-reveal>
-              <div>
-                <div className="eyebrow"><span className="eyebrow-line" aria-hidden="true" /> JUVENTUDE PIB</div>
-                <h2 id="youth-title"><AnimatedText text="Conheça mais a" /><br /><AnimatedText text="nossa" /> <em><AnimatedText text="juventude" /></em></h2>
-              </div>
-              <p>Uma geração que caminha junta, compartilha a fé e encontra alegria em servir a Jesus.</p>
-            </div>
-            <div className="youth-gallery">
-              <figure className="youth-photo" data-reveal>
-                <img src="/images/youth-keyboard.png" alt="Jovem tocando teclado durante um momento de louvor na igreja" width="900" height="1600" loading="lazy" decoding="async" />
-                <figcaption>Louvor e serviço</figcaption>
-              </figure>
-              <figure className="youth-photo" data-reveal>
-                <img src="/images/youth-worship.png" alt="Jovens reunidos em adoração durante um culto, com a banda ao fundo" width="1200" height="1600" loading="lazy" decoding="async" />
-                <figcaption>Fé e comunhão</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-
         <section className="visit-section section-space" id="visite" aria-labelledby="visit-title">
           <div className="container visit-grid"><div className="visit-copy" data-reveal><div className="eyebrow"><span className="eyebrow-line" /> A PORTA ESTÁ ABERTA</div><h2 id="visit-title"><AnimatedText text="Sua história também" /><br /><AnimatedText text="cabe" /> <em><AnimatedText text="aqui." /></em></h2><p>Não precisa ter tudo resolvido. Não precisa conhecer ninguém. Venha conhecer a nossa família e viver esse encontro com a gente.</p><a className="button button-green button-large" href={church.maps} target="_blank" rel="noreferrer">Como chegar <Navigation size={17} /></a><div className="visit-address"><MapPin size={18} /><span>{church.address}<br /><small>{church.locality}</small></span></div></div><div className="visit-questions" data-reveal><div className="faq-title">Vem pela primeira vez? <Heart size={18} /></div><details open><summary>Preciso avisar que estou indo? <Plus size={18} /></summary><p>Você pode vir diretamente a um dos nossos encontros. Confira a programação acima e escolha o melhor dia para conhecer a igreja.</p></details><details><summary>O que vou encontrar no culto? <Plus size={18} /></summary><p>Um momento para adorar a Deus, ouvir a Palavra e estar em comunidade. Nosso culto de celebração acontece aos domingos, às 19h.</p></details><details><summary>Como posso conhecer melhor a igreja? <Plus size={18} /></summary><p>Acompanhe nosso Instagram <a href={church.instagram} target="_blank" rel="noreferrer">{church.instagramHandle}</a> ou converse com a gente durante sua visita. Será uma alegria conhecer você.</p></details></div></div>
         </section>
@@ -205,7 +133,7 @@ function App() {
         <section className="instagram-banner"><div className="container instagram-inner"><span className="instagram-icon"><Instagram size={29} strokeWidth={1.4} /></span><div data-reveal><h2><AnimatedText text="A nossa conexão continua por lá." /></h2><p>Um pouco da nossa vida em comunidade, todos os dias.</p></div><a data-reveal href={church.instagram} target="_blank" rel="noreferrer">{church.instagramHandle} <ArrowUpRight size={22} /></a></div></section>
       </main>
 
-      <footer className="footer"><div className="container"><div className="footer-top"><a href="#inicio" className="footer-brand"><img src="/logo-pib.png" width="375" height="175" alt="Primeira Igreja Batista Campo Mourão" /><span>Um lugar para pertencer.<br />Uma fé para viver.</span></a><div className="footer-links"><span>FAÇA PARTE</span><a href="#nossa-igreja">Nossa igreja</a><a href="#programacao">Nossos encontros</a><a href="#visite">Planeje sua visita</a></div><div className="footer-contact"><span>ENCONTRE A GENTE</span><a href={church.maps} target="_blank" rel="noreferrer">{church.address}<br />{church.locality} <ArrowUpRight size={13} /></a><a href={church.instagram} target="_blank" rel="noreferrer"><Instagram size={15} /> {church.instagramHandle}</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Primeira Igreja Batista de Campo Mourão.</span><span>Feito com fé, esperança e amor. <Heart size={12} /></span><a href="#inicio" aria-label="Voltar ao início">Voltar ao topo <ArrowUpRight size={14} /></a></div></div></footer>
+      <SiteFooter page="home" />
 
       {modal && <dialog ref={dialogRef} className="dialog" onCancel={() => setModal(null)} onClose={() => setModal(null)} onClick={(event) => { if (event.target === event.currentTarget) { const box = event.currentTarget.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) setModal(null) } }} aria-labelledby="dialog-title">
         <button className="dialog-close" aria-label="Fechar janela" onClick={() => setModal(null)}><X size={21} /></button>

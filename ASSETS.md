@@ -28,7 +28,17 @@ Licença SIL Open Font License 1.1. As licenças completas estão incluídas em 
 
 - `public/images/church-worship.jpg`: foto real do culto, 826 × 452 pixels, fornecida pelo usuário. Utilizada na abertura e na apresentação da igreja.
 - `public/images/church-building.jpg`: foto real da fachada, 680 × 510 pixels, fornecida pelo usuário. Utilizada na apresentação da igreja.
-- `public/images/youth-keyboard.png`: jovem ao teclado durante o louvor, 900 × 1600 pixels, fornecida pelo usuário. Utilizada na seção “Conheça mais a nossa juventude”.
-- `public/images/youth-worship.png`: jovens em adoração, 1200 × 1600 pixels, fornecida pelo usuário. Utilizada na seção “Conheça mais a nossa juventude”.
+- `public/images/youth-keyboard.png`: jovem ao teclado durante o louvor, 900 × 1600 pixels, fornecida pelo usuário. Utilizada na página da juventude (`/juventude/`).
+- `public/images/youth-worship.png`: jovens em adoração, 1200 × 1600 pixels, fornecida pelo usuário. Utilizada na página da juventude (`/juventude/`).
 
 As imagens de culto e comunidade do Unsplash listadas acima ficam como alternativas; o site agora utiliza as fotografias reais enviadas pelo usuário. A fotografia da Bíblia continua ilustrativa.
+
+## Novas fotos da juventude
+
+Fornecidas pelo usuário em 12 de outubro de 2026 e utilizadas na página `/juventude/`, junto às duas fotos anteriores. As proporções originais são preservadas na galeria.
+
+- `public/images/youth-acoustic.png`: teclado e violão no louvor, 900 × 1600 pixels.
+- `public/images/youth-singers.png`: jovens cantando juntos, 900 × 1600 pixels.
+- `public/images/youth-gathering.png`: encontro da juventude, 571 × 758 pixels.
+- `public/images/youth-praise.png`: jovens de mãos erguidas em adoração, 1011 × 761 pixels.
+- `public/images/youth-band.png`: banda da juventude, 567 × 753 pixels.

@@ -18,7 +18,16 @@ export function useSmoothScroll(paused: boolean) {
       virtualScroll: ({ event, deltaX, deltaY }) => !event.shiftKey && Math.abs(deltaY) >= Math.abs(deltaX),
     })
     scrollRef.current = scroll
+    // Cross-page links arrive before React has rendered their anchor targets.
+    const initialAnchorFrame = requestAnimationFrame(() => {
+      if (!window.location.hash) return
+      try {
+        const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
+        if (target) scroll.scrollTo(target, { immediate: true })
+      } catch { /* Ignore malformed URL fragments. */ }
+    })
     return () => {
+      cancelAnimationFrame(initialAnchorFrame)
       scroll.destroy()
       scrollRef.current = null
     }

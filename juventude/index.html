@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#8caf47" />
+    <meta name="description" content="Conheça a juventude da PIB Campo Mourão: momentos de louvor, amizade e comunhão. Encontros aos sábados, às 19h." />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('pib-theme');
+        const theme = savedTheme === 'light' || savedTheme === 'dark'
+          ? savedTheme
+          : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        if (theme === 'dark') {
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#000000');
+        }
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Juventude | PIB Campo Mourão</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/youth-main.tsx"></script>
+  </body>
+</html>
