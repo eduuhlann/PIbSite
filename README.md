@@ -54,4 +54,4 @@ A programação usa uma lista responsiva com dias, horários e ações alinhados
 
 ## Página da juventude
 
-A página `/juventude/` possui entrada HTML própria (`juventude/index.html`), apresentação, galeria com sete fotos enviadas pelo responsável e informações da reunião de jovens. O acesso aparece no menu e no rodapé. Cabeçalho, rodapé, tema e animações são compartilhados com a página principal. O build gera `dist/juventude/index.html`, permitindo acesso direto e atualização da página sem configuração de rotas no servidor.
+A página `/juventude/` possui entrada HTML própria (`juventude/index.html`), apresentação, galeria com treze fotos enviadas pelo responsável e informações da reunião de jovens. O acesso aparece no menu e no rodapé. Cabeçalho, rodapé, tema e animações são compartilhados com a página principal. O build gera `dist/juventude/index.html`, permitindo acesso direto e atualização da página sem configuração de rotas no servidor.

@@ -15,6 +15,12 @@ const photos = [
   { src: '/images/youth-singers.png', width: 900, height: 1600, alt: 'Grupo de jovens cantando juntos no palco da igreja' },
   { src: '/images/youth-gathering.png', width: 571, height: 758, alt: 'Três jovens com microfones em um encontro da juventude, sob iluminação roxa' },
   { src: '/images/youth-band.png', width: 567, height: 753, alt: 'Banda da juventude reunida no palco durante um momento de adoração' },
+  { src: '/images/youth-welcome.png', width: 1139, height: 761, alt: 'Duas jovens sorrindo na recepção da igreja, diante de uma placa de boas-vindas' },
+  { src: '/images/youth-prayer.png', width: 1139, height: 760, alt: 'Jovens reunidos em oração, com a cabeça inclinada e as mãos unidas' },
+  { src: '/images/youth-community.png', width: 1142, height: 755, alt: 'Jovens participando de um momento de oração entre os bancos da igreja' },
+  { src: '/images/youth-message.png', width: 505, height: 744, alt: 'Mensagem compartilhada ao microfone no púlpito da igreja' },
+  { src: '/images/youth-sharing.png', width: 1138, height: 755, alt: 'Jovem falando ao microfone durante um encontro, com a banda ao fundo' },
+  { src: '/images/youth-worship-night.png', width: 1209, height: 750, alt: 'Momento de louvor com a banda no palco e a comunidade reunida' },
 ]
 
 export default function YouthPage() {

@@ -42,3 +42,14 @@ Fornecidas pelo usuário em 12 de outubro de 2026 e utilizadas na página `/juve
 - `public/images/youth-gathering.png`: encontro da juventude, 571 × 758 pixels.
 - `public/images/youth-praise.png`: jovens de mãos erguidas em adoração, 1011 × 761 pixels.
 - `public/images/youth-band.png`: banda da juventude, 567 × 753 pixels.
+
+## Mais momentos da juventude
+
+Seis fotos adicionais fornecidas pelo usuário em 12 de outubro de 2026, exibidas sem legendas na galeria da página `/juventude/`. Arquivos preservados como enviados.
+
+- `public/images/youth-welcome.png`: Duas jovens sorrindo na recepção da igreja, diante de uma placa de boas-vindas, 1139 × 761 pixels.
+- `public/images/youth-prayer.png`: Jovens reunidos em oração, com a cabeça inclinada e as mãos unidas, 1139 × 760 pixels.
+- `public/images/youth-community.png`: Jovens participando de um momento de oração entre os bancos da igreja, 1142 × 755 pixels.
+- `public/images/youth-message.png`: Mensagem compartilhada ao microfone no púlpito da igreja, 505 × 744 pixels.
+- `public/images/youth-sharing.png`: Jovem falando ao microfone durante um encontro, com a banda ao fundo, 1138 × 755 pixels.
+- `public/images/youth-worship-night.png`: Momento de louvor com a banda no palco e a comunidade reunida, 1209 × 750 pixels.
