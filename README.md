@@ -55,3 +55,7 @@ A programação usa uma lista responsiva com dias, horários e ações alinhados
 ## Página da juventude
 
 A página `/juventude/` possui entrada HTML própria (`juventude/index.html`), apresentação, galeria com treze fotos enviadas pelo responsável e informações da reunião de jovens. O acesso aparece no menu e no rodapé. Cabeçalho, rodapé e tema são compartilhados com a página principal. A juventude possui entradas escalonadas, efeitos nas fotos e botões, fundo decorativo animado e indicador de progresso da rolagem. As fotos abrem em um diálogo com navegação anterior/próxima, teclas de seta e Escape, foco contido e retorno à foto escolhida. As animações respeitam a preferência por movimento reduzido. O build gera `dist/juventude/index.html`, permitindo acesso direto e atualização da página sem configuração de rotas no servidor.
+
+## Mapa da igreja
+
+A página principal e `/juventude/` exibem um mapa Leaflet 1.9.4 com dados e mosaicos do OpenStreetMap, carregado apenas quando a área de localização se aproxima da tela. O marcador usa o POI [5049887422 do OpenStreetMap](https://www.openstreetmap.org/node/5049887422), coordenadas `-24.0429242, -52.3857254`, verificadas em 12 de outubro de 2026. Não há consulta à localização do visitante nem geocodificação durante o uso. O zoom por roda fica desativado para preservar a rolagem da página; botões, teclado e toque permitem explorar o mapa. Se a biblioteca ou os mosaicos iniciais falharem, um mapa incorporado do OpenStreetMap aparece como alternativa. O link para abrir o local no OpenStreetMap permanece disponível.

@@ -3,6 +3,7 @@ import { ArrowDown, ArrowLeft, ArrowUpRight, Clock3, Heart, MapPin, Maximize2, N
 import AnimatedText from './AnimatedText'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
+import ChurchMap from './ChurchMap'
 import YouthLightbox from './YouthLightbox'
 import { useYouthMotion } from './useYouthMotion'
 import { church, gatherings } from './content'
@@ -100,6 +101,7 @@ export default function YouthPage() {
               <a className="text-link" href={church.instagram} target="_blank" rel="noreferrer">Acompanhe no Instagram <ArrowUpRight size={17} /></a>
             </div>
           </div>
+          <div className="container"><ChurchMap /></div>
         </section>
       </main>
       <SiteFooter page="youth" />

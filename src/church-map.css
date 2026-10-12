@@ -1,0 +1,280 @@
+/* Shared church location card; map imagery keeps its original colors. */
+.site-shell .church-location {
+  min-width: 0;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.site-shell .church-location .church-location-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 32px;
+  margin-bottom: 20px;
+}
+
+.site-shell .church-location .church-location-heading > div { min-width: 0; }
+
+.site-shell .church-location .church-location-heading h3 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -.5px;
+  color: var(--ink);
+}
+
+.site-shell .church-location .church-location-heading p {
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.site-shell .church-location .church-map-external {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 9px;
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--green-dark);
+  text-underline-offset: 4px;
+}
+
+.site-shell .church-location .church-map-external:hover { text-decoration: underline; }
+.site-shell .church-location .church-map-external svg { flex-shrink: 0; }
+.site-shell .church-location [data-map-state] { position: relative; min-width: 0; }
+
+.site-shell .church-location .church-map-canvas {
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 360px;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--cream);
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+.site-shell .church-location .church-map-canvas:focus-visible {
+  outline: 3px solid var(--green-dark);
+  outline-offset: 5px;
+}
+
+.site-shell .church-location .church-map-canvas[hidden] { display: none; }
+
+.site-shell .church-location .church-map-status {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  background: var(--cream);
+  text-align: center;
+}
+
+.site-shell .church-location .church-map-status p {
+  max-width: 48ch;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.site-shell .church-location .church-map-status a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-shell .church-location [data-map-state='ready'] .church-map-status { display: none; }
+
+.site-shell .church-location .church-map-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-top .leaflet-control { margin-top: 12px; }
+.site-shell .church-location .church-map-canvas .leaflet-left .leaflet-control { margin-left: 12px; }
+
+.site-shell .church-location .church-map-canvas .leaflet-bar {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 3px 12px #25301c12;
+  overflow: hidden;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-bar a {
+  width: 42px;
+  height: 42px;
+  border-bottom-color: var(--border);
+  color: var(--ink);
+  background: var(--page-background);
+  font-size: 25px;
+  line-height: 42px;
+  text-decoration: none;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-bar a:hover {
+  color: #233018;
+  background: #e8efdc;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-bar a:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--green-dark);
+  outline-offset: -3px;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-bar a.leaflet-disabled {
+  color: var(--muted);
+  background: var(--cream);
+  cursor: default;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-control-attribution {
+  max-width: calc(100% - 12px);
+  padding: 3px 7px;
+  background: #fffffff2;
+  color: #38412f;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: right;
+  white-space: normal;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-control-attribution a {
+  color: #355620;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-popup-content-wrapper,
+.site-shell .church-location .church-map-canvas .leaflet-popup-tip {
+  color: var(--ink);
+  background: var(--page-background);
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  box-shadow: 0 5px 22px #17211124;
+}
+
+.site-shell .church-location .church-map-canvas .leaflet-popup-content {
+  margin: 19px 48px 19px 19px;
+  font-family: 'Manrope', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.site-shell .church-location .church-map-canvas a.leaflet-popup-close-button {
+  top: 2px;
+  right: 2px;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 44px;
+}
+
+.site-shell .church-location .church-map-canvas a.leaflet-popup-close-button:hover {
+  color: var(--ink);
+  background: var(--cream);
+}
+
+.site-shell .church-location .church-map-canvas a.leaflet-popup-close-button:focus-visible {
+  outline: 3px solid var(--green-dark);
+  outline-offset: -4px;
+}
+
+.site-shell .church-location .church-map-popup strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.site-shell .church-location .church-map-popup span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.site-shell .church-location .church-map-marker {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.site-shell .church-location .church-map-marker > span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #678638;
+  box-shadow: 0 0 0 7px #a3c55e40, 0 2px 8px #1b2a1740;
+}
+
+.site-shell .church-location .church-map-marker:focus-visible {
+  outline: 3px solid #678638;
+  outline-offset: 5px;
+}
+
+.site-shell[data-theme='dark'] .church-location .church-map-external,
+.site-shell[data-theme='dark'] .church-location .church-map-status a { color: #bdd78a; }
+
+.site-shell[data-theme='dark'] .church-location .church-map-canvas:focus-visible,
+.site-shell[data-theme='dark'] .church-location .church-map-canvas .leaflet-bar a:focus-visible,
+.site-shell[data-theme='dark'] .church-location .church-map-canvas a.leaflet-popup-close-button:focus-visible {
+  outline-color: #bdd78a;
+}
+
+.site-shell[data-theme='dark'] .church-location .church-map-canvas .leaflet-bar a:hover {
+  color: #d7eab9;
+  background: #20251b;
+}
+
+@media (max-width: 760px) {
+  .site-shell .church-location { padding-top: 28px; }
+
+  .site-shell .church-location .church-location-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+
+  .site-shell .church-location .church-location-heading h3 { font-size: 21px; }
+  .site-shell .church-location .church-map-external { align-self: flex-start; }
+  .site-shell .church-location .church-map-canvas { height: 300px; }
+  .site-shell .church-location .church-map-canvas .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; }
+  .site-shell .church-location .church-map-canvas .leaflet-popup-content { margin: 16px 44px 16px 16px; }
+}

@@ -7,6 +7,7 @@ import ScheduleList from './ScheduleList'
 import AnimatedText from './AnimatedText'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
+import ChurchMap from './ChurchMap'
 import { useScrollReveal } from './useScrollReveal'
 
 type Modal = 'visit' | 'about' | null
@@ -128,6 +129,7 @@ function App() {
 
         <section className="visit-section section-space" id="visite" aria-labelledby="visit-title">
           <div className="container visit-grid"><div className="visit-copy" data-reveal><div className="eyebrow"><span className="eyebrow-line" /> A PORTA ESTÁ ABERTA</div><h2 id="visit-title"><AnimatedText text="Sua história também" /><br /><AnimatedText text="cabe" /> <em><AnimatedText text="aqui." /></em></h2><p>Não precisa ter tudo resolvido. Não precisa conhecer ninguém. Venha conhecer a nossa família e viver esse encontro com a gente.</p><a className="button button-green button-large" href={church.maps} target="_blank" rel="noreferrer">Como chegar <Navigation size={17} /></a><div className="visit-address"><MapPin size={18} /><span>{church.address}<br /><small>{church.locality}</small></span></div></div><div className="visit-questions" data-reveal><div className="faq-title">Vem pela primeira vez? <Heart size={18} /></div><details open><summary>Preciso avisar que estou indo? <Plus size={18} /></summary><p>Você pode vir diretamente a um dos nossos encontros. Confira a programação acima e escolha o melhor dia para conhecer a igreja.</p></details><details><summary>O que vou encontrar no culto? <Plus size={18} /></summary><p>Um momento para adorar a Deus, ouvir a Palavra e estar em comunidade. Nosso culto de celebração acontece aos domingos, às 19h.</p></details><details><summary>Como posso conhecer melhor a igreja? <Plus size={18} /></summary><p>Acompanhe nosso Instagram <a href={church.instagram} target="_blank" rel="noreferrer">{church.instagramHandle}</a> ou converse com a gente durante sua visita. Será uma alegria conhecer você.</p></details></div></div>
+          <div className="container"><ChurchMap /></div>
         </section>
 
         <section className="instagram-banner"><div className="container instagram-inner"><span className="instagram-icon"><Instagram size={29} strokeWidth={1.4} /></span><div data-reveal><h2><AnimatedText text="A nossa conexão continua por lá." /></h2><p>Um pouco da nossa vida em comunidade, todos os dias.</p></div><a data-reveal href={church.instagram} target="_blank" rel="noreferrer">{church.instagramHandle} <ArrowUpRight size={22} /></a></div></section>

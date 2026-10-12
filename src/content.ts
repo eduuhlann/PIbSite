@@ -5,6 +5,9 @@ export const church = {
   locality: 'Campo Mourão, Paraná',
   instagram: 'https://www.instagram.com/pibcm_oficial/',
   instagramHandle: '@pibcm_oficial',
+  // Verified church POI: https://www.openstreetmap.org/node/5049887422
+  coordinates: { latitude: -24.0429242, longitude: -52.3857254 },
+  openStreetMap: 'https://www.openstreetmap.org/node/5049887422',
   maps: 'https://www.google.com/maps/search/?api=1&query=Primeira+Igreja+Batista+Av.+Comendador+Norberto+Marcondes+813+Campo+Mour%C3%A3o+PR',
 }
 

@@ -53,3 +53,7 @@ Seis fotos adicionais fornecidas pelo usuário em 12 de outubro de 2026, exibida
 - `public/images/youth-message.png`: Mensagem compartilhada ao microfone no púlpito da igreja, 505 × 744 pixels.
 - `public/images/youth-sharing.png`: Jovem falando ao microfone durante um encontro, com a banda ao fundo, 1138 × 755 pixels.
 - `public/images/youth-worship-night.png`: Momento de louvor com a banda no palco e a comunidade reunida, 1209 × 750 pixels.
+
+## Mapas
+
+Leaflet 1.9.4, licença BSD-2-Clause, instalado pelo pacote oficial. Mosaicos de `https://tile.openstreetmap.org/{z}/{x}/{y}.png`, com atribuição visível a OpenStreetMap contributors e link para copyright. O mapa incorporado alternativo também é fornecido pelo OpenStreetMap. Referência de localização: [nó 5049887422](https://www.openstreetmap.org/node/5049887422).
