@@ -1,0 +1,37 @@
+.youth-section {
+  background: var(--cream);
+  border-block: 1px solid var(--border);
+}
+
+.youth-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+  align-items: start;
+  gap: 28px;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.youth-photo { margin: 0; min-width: 0; }
+
+.youth-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.youth-photo figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .youth-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    max-width: 480px;
+  }
+}

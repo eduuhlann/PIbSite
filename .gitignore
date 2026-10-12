@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.sites-runtime/
+*.local
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+artifacts/

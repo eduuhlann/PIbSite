@@ -1,0 +1,162 @@
+/* Theme colors preserve the church's green identity in both appearances. */
+:root {
+  --page-background: #ffffff;
+  --page-text: #24291f;
+}
+body, #root {
+  background-color: var(--page-background);
+  color: var(--page-text);
+}
+#root { min-height: 100vh; }
+.site-shell {
+  --green: #a3c55e;
+  --green-dark: #678638;
+  --ink: #252b21;
+  --muted: #687060;
+  --cream: #f6f7f1;
+  --border: #e5e7dd;
+  --dark: #293523;
+  --page-background: #ffffff;
+  --page-text: #24291f;
+  min-height: 100dvh;
+  font-family: 'Manrope', Arial, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  color: var(--page-text);
+  background-color: var(--page-background);
+  color-scheme: light;
+}
+html.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 86px;
+  min-height: 44px;
+  padding: 10px 12px;
+  flex-shrink: 0;
+  border: 1px solid #dce4d0;
+  border-radius: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #526b35;
+  background: #f4f7ee;
+  transition: background .2s;
+}
+.theme-toggle:hover { background: #e7efd9; }
+.header-inner { gap: 20px; }
+.navigation { margin-right: 5px; }
+
+html[data-theme='dark'],
+.site-shell[data-theme='dark'] {
+  --ink: #edf2e5;
+  --muted: #b3bda8;
+  --cream: #080808;
+  --border: #292929;
+  --dark: #050505;
+  --page-background: #000000;
+  --page-text: #edf2e5;
+  color: var(--ink);
+  background: #000000;
+  color-scheme: dark;
+}
+.site-shell[data-theme='dark'] .announcement { border-color: var(--border); }
+.site-shell[data-theme='dark'] .announcement-inner { color: #b6c1a8; }
+.site-shell[data-theme='dark'] .header { background: #050505f5; border-color: var(--border); }
+.site-shell[data-theme='dark'] .brand img,
+.site-shell[data-theme='dark'] .footer-brand img { filter: invert(1) hue-rotate(180deg) brightness(1.7); mix-blend-mode: screen; }
+.site-shell[data-theme='dark'] .nav-link { color: #b8c3ad; }
+.site-shell[data-theme='dark'] .nav-link.active,
+.site-shell[data-theme='dark'] .nav-link:hover { color: #d4e9b1; }
+.site-shell[data-theme='dark'] .theme-toggle { border-color: #414141; background: #151515; color: #c5dd9b; }
+.site-shell[data-theme='dark'] .theme-toggle:hover { background: #242424; }
+.site-shell[data-theme='dark'] .menu-toggle { color: #c5dd9b; }
+.site-shell[data-theme='dark'] .welcome-strip { background: #050505; }
+.site-shell[data-theme='dark'] .strip-icon { background: #171717; color: #c0d995; }
+.site-shell[data-theme='dark'] .strip-item small { color: #b7c2a8; }
+.site-shell[data-theme='dark'] .strip-arrow { color: #b1cd84; }
+.site-shell[data-theme='dark'] .eyebrow { color: #b4ce8a; }
+.site-shell[data-theme='dark'] h2 em { color: #b5d187; }
+.site-shell[data-theme='dark'] .hero h1 em { color: #c3dc91; }
+.site-shell[data-theme='dark'] .hero-image { filter: brightness(.72); }
+.site-shell[data-theme='dark'] .hero-shade {
+  background: linear-gradient(90deg, #000000ed 0%, #000000bf 42%, #0000004d 80%), linear-gradient(0deg, #000000b3, transparent 55%);
+}
+.site-shell[data-theme='dark'] .about-section,
+.site-shell[data-theme='dark'] .schedule-section,
+.site-shell[data-theme='dark'] .visit-section { background-color: var(--page-background); }
+.site-shell[data-theme='dark'] .about-small-image { border-color: #000000; }
+.site-shell[data-theme='dark'] .about-note { background: #111111; }
+.site-shell[data-theme='dark'] .about-note span { color: #c4d3b0; }
+.site-shell[data-theme='dark'] .about-note strong { color: #edf2e5; }
+.site-shell[data-theme='dark'] .about-note svg { color: #b9d38a; }
+.site-shell[data-theme='dark'] .about-caption { color: #b0bca2; }
+.site-shell[data-theme='dark'] .about-copy .text-lead { color: #d5dec9; }
+.site-shell[data-theme='dark'] .round-arrow { border-color: #414141; color: #c0d797; }
+.site-shell[data-theme='dark'] .text-link:hover .round-arrow { background: #202020; }
+.site-shell[data-theme='dark'] .schedule-card { background: #0b0b0b; border-color: #303030; }
+.site-shell[data-theme='dark'] .schedule-card:hover { background: #141414; border-color: #708653; }
+.site-shell[data-theme='dark'] .schedule-card:last-child { background: #111111; border-color: #454545; }
+.site-shell[data-theme='dark'] .schedule-day { color: #c0d59e; }
+.site-shell[data-theme='dark'] .schedule-time { color: #c8dfa5; }
+.site-shell[data-theme='dark'] .schedule-card-top { color: #b8cf94; }
+.site-shell[data-theme='dark'] .schedule-link { border-color: #383838; color: #c7dda5; }
+.site-shell[data-theme='dark'] .schedule-link:hover { color: #e4f2cd; }
+.site-shell[data-theme='dark'] .schedule-footer { color: #b4bfa7; }
+.site-shell[data-theme='dark'] .schedule-footer a { color: #c0d79a; }
+.site-shell[data-theme='dark'] .reflection-tabs { border-color: #383838; }
+.site-shell[data-theme='dark'] .reflection-tab { color: #b3bfa3; }
+.site-shell[data-theme='dark'] .reflection-tab.selected { color: #d0e6ac; border-color: #b0cc80; }
+.site-shell[data-theme='dark'] .reflection-preview blockquote { color: #c2cdb5; }
+.site-shell[data-theme='dark'] .reflection-preview cite { color: #b7ce94; }
+.site-shell[data-theme='dark'] .visit-address { color: #c0ccb1; }
+.site-shell[data-theme='dark'] .visit-address small { color: #b0bea0; }
+.site-shell[data-theme='dark'] .visit-questions details a { color: #c2db97; }
+.site-shell[data-theme='dark'] .instagram-banner { background: #080808; border-color: #2c2c2c; }
+.site-shell[data-theme='dark'] .instagram-icon { color: #c0d79a; border-color: #768b58; }
+.site-shell[data-theme='dark'] .instagram-inner p { color: #bac8a9; }
+.site-shell[data-theme='dark'] .instagram-inner > a { color: #cee1ad; }
+.site-shell[data-theme='dark'] .instagram-inner > a:hover { color: #e8f5d3; }
+.site-shell[data-theme='dark'] .footer { background: #000000; }
+.site-shell[data-theme='dark'] .footer-brand > span,
+.site-shell[data-theme='dark'] .footer-bottom { color: #aebd9d; }
+.site-shell[data-theme='dark'] .footer-links > span,
+.site-shell[data-theme='dark'] .footer-contact > span { color: #b6c6a2; }
+.site-shell[data-theme='dark'] .footer-links a,
+.site-shell[data-theme='dark'] .footer-contact a { color: #b6c2aa; }
+.site-shell[data-theme='dark'] .footer-links a:hover,
+.site-shell[data-theme='dark'] .footer-contact a:hover { color: #d7edb5; }
+.site-shell[data-theme='dark'] .dialog { background: #0b0b0b; border-color: #454545; }
+.site-shell[data-theme='dark'] .dialog-close,
+.site-shell[data-theme='dark'] .dialog-symbol { color: #c4dda0; background: #191919; }
+.site-shell[data-theme='dark'] .dialog-close:hover { background: #292929; }
+.site-shell[data-theme='dark'] .dialog-schedule small,
+.site-shell[data-theme='dark'] .dialog-address,
+.site-shell[data-theme='dark'] .dialog-instagram { color: #b5c69f; }
+.site-shell[data-theme='dark'] .dialog-schedule b { color: #c6dda4; }
+.site-shell[data-theme='dark'] .belief-list > div > svg { color: #bed794; }
+.site-shell[data-theme='dark'] .dialog-verse { color: #c9dfa7; }
+.site-shell[data-theme='dark'] .dialog-verse cite { color: #b8cba0; }
+.site-shell[data-theme='dark'] .reflection-practice { background: #151515; }
+.site-shell[data-theme='dark'] .reflection-practice > strong { color: #d0e4b2; }
+.site-shell[data-theme='dark'] .reflection-practice p { color: #c1cfb2; }
+
+@media (max-width: 980px) {
+  .header-inner { gap: 13px; }
+  .navigation { gap: 15px; margin-right: 0; }
+  .header-visit { display: none; }
+}
+@media (max-width: 760px) {
+  .header-visit { display: none; }
+  .theme-toggle { margin-left: auto; }
+  .site-shell[data-theme='dark'] .navigation { background: #050505; border-color: #333333; }
+  .site-shell[data-theme='dark'] .nav-link { border-color: #292929; }
+}
+@media (max-width: 380px) {
+  .header-inner { gap: 8px; }
+  .theme-toggle { min-width: 81px; padding-inline: 9px; font-size: 10px; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle { transition: none; }
+}
