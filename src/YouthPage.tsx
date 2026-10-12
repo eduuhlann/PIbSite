@@ -1,7 +1,10 @@
-import { ArrowDown, ArrowLeft, ArrowUpRight, Clock3, Heart, MapPin, Navigation } from 'lucide-react'
+import { useRef, useState, type CSSProperties } from 'react'
+import { ArrowDown, ArrowLeft, ArrowUpRight, Clock3, Heart, MapPin, Maximize2, Navigation } from 'lucide-react'
 import AnimatedText from './AnimatedText'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
+import YouthLightbox from './YouthLightbox'
+import { useYouthMotion } from './useYouthMotion'
 import { church, gatherings } from './content'
 import { useTheme } from './useTheme'
 import { useSmoothScroll } from './useSmoothScroll'
@@ -26,30 +29,37 @@ const photos = [
 export default function YouthPage() {
   const { theme, toggleTheme } = useTheme()
   const youthGathering = gatherings.find((gathering) => gathering.title === 'Reunião de jovens')
-  useSmoothScroll(false)
+  const pageRef = useRef<HTMLDivElement>(null)
+  const [activePhoto, setActivePhoto] = useState<number | null>(null)
+  const closePhoto = () => setActivePhoto(null)
+  const stepPhoto = (direction: number) => setActivePhoto((current) => current === null ? null : (current + direction + photos.length) % photos.length)
+  useSmoothScroll(activePhoto !== null)
+  useYouthMotion(pageRef)
   useScrollReveal()
 
   return (
-    <div className="site-shell youth-page" data-theme={theme}>
+    <div className="site-shell youth-page" data-theme={theme} ref={pageRef}>
+      <div className="youth-scroll-progress" aria-hidden="true" />
       <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <SiteHeader page="youth" theme={theme} onToggleTheme={toggleTheme} />
 
       <main id="conteudo">
         <section className="youth-hero" id="inicio" aria-labelledby="youth-title">
+          <div className="youth-hero-glow" aria-hidden="true"><span /><span /><span /></div>
           <div className="container youth-hero-inner">
             <div className="youth-intro" data-reveal>
-              <a className="youth-back" href="/"><ArrowLeft size={16} /> Voltar para a igreja</a>
+              <a className="youth-back" href="/" data-youth-step><ArrowLeft size={16} /> Voltar para a igreja</a>
               <div className="eyebrow"><span className="eyebrow-line" aria-hidden="true" /> JUVENTUDE PIB · CAMPO MOURÃO</div>
-              <h1 id="youth-title"><AnimatedText text="Conheça mais a" /><br /><AnimatedText text="nossa" /> <em><AnimatedText text="juventude" /></em></h1>
-              <p>Uma geração que caminha junta, compartilha a fé e encontra alegria em servir a Jesus. Aqui, há espaço para sua história.</p>
-              <div className="youth-hero-actions">
+              <h1 id="youth-title" data-youth-step style={{ '--youth-delay': '100ms' } as CSSProperties}><AnimatedText text="Conheça mais a" /><br /><AnimatedText text="nossa" /> <em><AnimatedText text="juventude" /></em></h1>
+              <p data-youth-step style={{ '--youth-delay': '200ms' } as CSSProperties}>Uma geração que caminha junta, compartilha a fé e encontra alegria em servir a Jesus. Aqui, há espaço para sua história.</p>
+              <div className="youth-hero-actions" data-youth-step style={{ '--youth-delay': '300ms' } as CSSProperties}>
                 <a className="button button-green button-large" href="#encontros">Vem com a gente <ArrowUpRight size={18} /></a>
                 <a className="text-link" href="#momentos">Nossos momentos <ArrowDown size={17} /></a>
               </div>
-              {youthGathering && <div className="youth-hero-note"><Clock3 size={17} /><span>{youthGathering.day === 'SÁBADO' ? 'Sábados' : youthGathering.day}, às {youthGathering.time}</span></div>}
+              {youthGathering && <div className="youth-hero-note" data-youth-step style={{ '--youth-delay': '400ms' } as CSSProperties}><Clock3 size={17} /><span>{youthGathering.day === 'SÁBADO' ? 'Sábados' : youthGathering.day}, às {youthGathering.time}</span></div>}
             </div>
             <figure className="youth-cover" data-reveal>
-              <img src="/images/youth-praise.png" width="1011" height="761" alt="Jovens da PIB Campo Mourão cantando juntos de mãos erguidas" fetchPriority="high" />
+              <div className="youth-cover-frame"><img src="/images/youth-praise.png" width="1011" height="761" alt="Jovens da PIB Campo Mourão cantando juntos de mãos erguidas" fetchPriority="high" /></div>
             </figure>
           </div>
         </section>
@@ -61,8 +71,11 @@ export default function YouthPage() {
               <p>Louvor, amizade e comunhão. Um pouco dos momentos que vivemos juntos.</p>
             </div>
             <div className="youth-gallery">
-              {photos.map((photo) => <figure className="youth-photo" data-reveal key={photo.src}>
-                <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+              {photos.map((photo, index) => <figure className="youth-photo" data-reveal key={photo.src} style={{ '--youth-delay': `${index % 3 * 60}ms` } as CSSProperties}>
+                <button className="youth-photo-button" type="button" onClick={() => setActivePhoto(index)} aria-label={`Ampliar foto ${index + 1} de ${photos.length}: ${photo.alt}`}>
+                  <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+                  <span className="youth-photo-open" aria-hidden="true"><Maximize2 size={20} /></span>
+                </button>
               </figure>)}
             </div>
           </div>
@@ -90,6 +103,7 @@ export default function YouthPage() {
         </section>
       </main>
       <SiteFooter page="youth" />
+      <YouthLightbox photo={activePhoto === null ? null : photos[activePhoto]} index={activePhoto ?? 0} total={photos.length} onClose={closePhoto} onStep={stepPhoto} />
     </div>
   )
 }
